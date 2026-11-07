@@ -1,0 +1,170 @@
+/* ==========================================================================
+   Graphic & Comic Pop Art Style (No Glassmorphism)
+   Theme: Bold Comic Blues & Midnight Inks
+   Features: Scroll Reveal Animations & Organic Floating Effects
+   ========================================================================== */
+
+:root {
+  --comic-bg-light: #f0f7ff;
+  --comic-dot-color: rgba(37, 99, 235, 0.15);
+  --border-color: #0f172a;
+  --shadow-color: #0f172a;
+}
+
+html.dark {
+  --comic-bg-light: #080d19;
+  --comic-dot-color: rgba(56, 189, 248, 0.15);
+  --border-color: #ffffff;
+  --shadow-color: #38bdf8;
+}
+
+/* Comic halftone dot background */
+body.comic-bg {
+  background-color: var(--comic-bg-light);
+  background-image: radial-gradient(var(--comic-dot-color) 2px, transparent 2px);
+  background-size: 20px 20px;
+  min-height: 100vh;
+}
+
+/* Comic Box with hard edge neo-brutalist offset shadow */
+.comic-box {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Comic Speech Bubble Little Graphic Tails */
+.comic-bubble-left {
+  position: relative;
+}
+
+.comic-bubble-left::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-right: 8px solid var(--border-color);
+  border-top: 8px solid transparent;
+}
+
+.comic-bubble-right {
+  position: relative;
+}
+
+.comic-bubble-right::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -8px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid var(--border-color);
+  border-top: 8px solid transparent;
+}
+
+/* Dropdown Grid Animation */
+.dropdown-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.dropdown-content.open {
+  grid-template-rows: 1fr;
+}
+
+.dropdown-inner {
+  overflow: hidden;
+}
+
+/* Rotating Chevron */
+#chevron.rotate {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   SCROLL REVEAL ANIMATIONS (Reveal only when scrolling down)
+   ========================================================================== */
+
+.scroll-reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.34, 1.45, 0.64, 1);
+}
+
+/* Left bubbles slide in from the left */
+.scroll-reveal.reveal-left {
+  transform: translateX(-50px) translateY(20px) scale(0.94);
+}
+
+/* Right bubbles slide in from the right */
+.scroll-reveal.reveal-right {
+  transform: translateX(50px) translateY(20px) scale(0.94);
+}
+
+/* Neutral items rise up */
+.scroll-reveal.reveal-up {
+  transform: translateY(35px) scale(0.95);
+}
+
+/* When in viewport / scrolled into view */
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+/* ==========================================================================
+   FLOATING ANIMATIONS (Gentle, living comic bobbing effects)
+   ========================================================================== */
+
+@keyframes floatBobA {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-0.5deg);
+  }
+}
+
+@keyframes floatBobB {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(0.6deg);
+  }
+}
+
+@keyframes floatBobC {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Asynchronous Floating Classes */
+.comic-float-1 {
+  animation: floatBobA 4.8s ease-in-out infinite;
+  display: inline-block;
+  width: 100%;
+}
+
+.comic-float-2 {
+  animation: floatBobB 5.4s ease-in-out infinite 0.7s;
+  display: inline-block;
+  width: 100%;
+}
+
+.comic-float-3 {
+  animation: floatBobC 4.2s ease-in-out infinite 1.2s;
+}
+
+/* Selection Color */
+::selection {
+  background-color: #facc15;
+  color: #0f172a;
+}

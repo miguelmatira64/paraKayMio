@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 18th Birthday, Mio!</title>
+
+  <!-- Graphic & Comic Style Fonts: Space Grotesk & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            comic: {
+              blue: '#2563eb',
+              sky: '#38bdf8',
+              navy: '#0f172a',
+              ink: '#090d16',
+              night: '#0e1726',
+              panel: '#131f36',
+              yellow: '#facc15',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Feather / Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="comic-bg min-h-screen text-slate-900 dark:text-slate-100 font-sans antialiased flex flex-col justify-between p-4 sm:p-8 transition-colors duration-200">
+
+  <!-- Top Bar: Comic-styled Minimal Theme Toggle -->
+  <header class="w-full max-w-2xl mx-auto flex items-center justify-between">
+    
+    <!-- Comic Issue Badge with Floating Animation -->
+    <div class="comic-float-3">
+      <div class="comic-badge text-xs font-display font-bold uppercase tracking-wider px-3 py-1 bg-yellow-300 text-slate-900 border-2 border-slate-900 dark:border-white shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_#fff]">
+        ★ MENSAHE NI MIGONG BALIW
+      </div>
+    </div>
+
+    <!-- Theme Toggle Button -->
+    <button id="themeToggle" type="button" aria-label="Toggle theme"
+      class="comic-btn p-2.5 bg-white dark:bg-comic-panel text-slate-900 dark:text-white border-2 border-slate-900 dark:border-white shadow-[3px_3px_0px_#0f172a] dark:shadow-[3px_3px_0px_#38bdf8] rounded-xl active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_#0f172a] transition-all">
+      <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+      <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+    </button>
+  </header>
+
+  <!-- Main Section -->
+  <main class="w-full max-w-2xl mx-auto my-auto py-8 sm:py-12 space-y-6">
+    
+    <!-- Hero Title Comic Banner -->
+    <div class="text-center space-y-3">
+      <div class="inline-block comic-float-3 bg-blue-600 text-white font-display font-bold text-xs uppercase px-3 py-1 rounded-full border-2 border-slate-900 dark:border-white shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_#38bdf8]">
+        ILLEGAL > LEGAL
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white uppercase">
+        HAPPY NA BIRTHDAY MO PA, <span class="text-blue-600 dark:text-sky-400 underline decoration-yellow-400 decoration-wavy decoration-2 underline-offset-4">MIO!</span> 🎂
+      </h1>
+      <p class="text-sm font-medium text-slate-600 dark:text-slate-300">
+        Pindutin mo toh para makita mo mga malolopet kong mensahe sa'yo, HAHAHAHA
+      </p>
+    </div>
+
+    <!-- Dropdown Comic Panel -->
+    <div class="comic-box bg-white dark:bg-comic-panel border-[3px] border-slate-900 dark:border-white rounded-2xl shadow-[6px_6px_0px_#0f172a] dark:shadow-[6px_6px_0px_#38bdf8] overflow-hidden transition-all">
+      
+      <!-- Dropdown Trigger Button -->
+      <button id="dropdownBtn" type="button" aria-expanded="false"
+        class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-display font-bold text-base sm:text-lg bg-blue-50 hover:bg-blue-100 dark:bg-comic-night dark:hover:bg-slate-800 text-slate-900 dark:text-white transition-colors cursor-pointer border-b-2 border-slate-900 dark:border-white">
+        <span class="flex items-center gap-2">
+          <span class="text-blue-600 dark:text-sky-400 font-mono text-sm">▶</span>
+          <span>CLICK TO OPEN LETTER</span>
+        </span>
+        <div class="w-8 h-8 rounded-lg bg-white dark:bg-slate-700 border-2 border-slate-900 dark:border-white flex items-center justify-center shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_#fff]">
+          <i data-lucide="chevron-down" id="chevron" class="w-4 h-4 text-slate-900 dark:text-white transition-transform duration-300"></i>
+        </div>
+      </button>
+
+      <!-- Dropdown Content (Alternating Graphic Comic Speech Bubbles) -->
+      <div id="dropdownContent" class="dropdown-content">
+        <div class="dropdown-inner p-4 sm:p-6 space-y-7 text-sm sm:text-base leading-relaxed bg-slate-50 dark:bg-comic-ink">
+
+          <!-- Paragraph 1: Left-aligned speech bubble with Scroll Reveal + Floating -->
+          <div class="scroll-reveal reveal-left flex justify-start">
+            <div class="comic-float-1 flex justify-start">
+              <div class="comic-bubble-left max-w-[92%] sm:max-w-[85%] p-4 bg-white dark:bg-comic-panel text-slate-800 dark:text-slate-100 border-2 border-slate-900 dark:border-white rounded-2xl rounded-tl-none shadow-[4px_4px_0px_#0f172a] dark:shadow-[4px_4px_0px_#38bdf8] text-left">
+                <span class="comic-tag text-[10px] font-display font-bold uppercase text-blue-600 dark:text-sky-400 block mb-1">
+                  #01
+                </span>
+                <p>
+                  Mio, you are by far the most wonderful person that I have met in my entire life, and I am happy that it was you who made me change the way of my living to be the best person I have ever been.
+                </p>
+              </div>  
+            </div>
+          </div>
+
+          <!-- Paragraph 2: Right-aligned speech bubble with Scroll Reveal + Floating -->
+          <div class="scroll-reveal reveal-right flex justify-end">
+            <div class="comic-float-2 flex justify-end">
+              <div class="comic-bubble-right max-w-[92%] sm:max-w-[85%] p-4 bg-blue-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border-2 border-slate-900 dark:border-white rounded-2xl rounded-tr-none shadow-[4px_4px_0px_#0f172a] dark:shadow-[4px_4px_0px_#38bdf8] text-right">
+                <span class="comic-tag text-[10px] font-display font-bold uppercase text-blue-600 dark:text-sky-400 block mb-1">
+                  #02
+                </span>
+                <p>
+                  It's been a month after everything, but let's not dwell on that and move on upon your future success, hehe. You as an aspiring Grade 12 student, who's always so damn persistent and caring towards others, is always what makes you Mio. I hope you keep being Mio! You deserve you who are, and deserve the best for everything.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paragraph 3: Left-aligned speech bubble with Scroll Reveal + Floating -->
+          <div class="scroll-reveal reveal-left flex justify-start">
+            <div class="comic-float-1 flex justify-start">
+              <div class="comic-bubble-left max-w-[92%] sm:max-w-[85%] p-4 bg-white dark:bg-comic-panel text-slate-800 dark:text-slate-100 border-2 border-slate-900 dark:border-white rounded-2xl rounded-tl-none shadow-[4px_4px_0px_#0f172a] dark:shadow-[4px_4px_0px_#38bdf8] text-left">
+                <span class="comic-tag text-[10px] font-display font-bold uppercase text-blue-600 dark:text-sky-400 block mb-1">
+                  #03
+                </span>
+                <p>
+                  Let's move on na sa actual message ko HAHAHAHHA, from the first month that we've met, you're really something extraordinary and someone passionate towards caring for one another, and I am glad that I have experienced your care, napaka-comfy and the warmth you provide just to support me, is something that I longed of, from a very long time.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paragraph 4: Right-aligned speech bubble with Scroll Reveal + Floating -->
+          <div class="scroll-reveal reveal-right flex justify-end">
+            <div class="comic-float-2 flex justify-end">
+              <div class="comic-bubble-right max-w-[92%] sm:max-w-[85%] p-4 bg-blue-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border-2 border-slate-900 dark:border-white rounded-2xl rounded-tr-none shadow-[4px_4px_0px_#0f172a] dark:shadow-[4px_4px_0px_#38bdf8] text-right">
+                <span class="comic-tag text-[10px] font-display font-bold uppercase text-blue-600 dark:text-sky-400 block mb-1">
+                  #04
+                </span>
+                <p>
+                  Well? Happy Birthday! It's your 18th Birthday and you deserve the things you want and need, as you definitely do. I hope that, in every year you turn, you learn and become to be the better person than what you've known from yourself. Grabe, ang drastic ng change mo from before and sobrang saya ko na I have been a part of it!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paragraph 5: Left-aligned speech bubble with Scroll Reveal + Floating -->
+          <div class="scroll-reveal reveal-left flex justify-start">
+            <div class="comic-float-1 flex justify-start">
+              <div class="comic-bubble-left max-w-[92%] sm:max-w-[85%] p-4 bg-white dark:bg-comic-panel text-slate-800 dark:text-slate-100 border-2 border-slate-900 dark:border-white rounded-2xl rounded-tl-none shadow-[4px_4px_0px_#0f172a] dark:shadow-[4px_4px_0px_#38bdf8] text-left">
+                <span class="comic-tag text-[10px] font-display font-bold uppercase text-blue-600 dark:text-sky-400 block mb-1">
+                  #05
+                </span>
+                <p>
+                  I hope you keep learning more, and focus more on what you think is best for you, and also be the best of what you are today, and DEFINITELY na mahalin lalo ang sarili mo heheh, dahil alam ko na kaya mo yan and mas lalong alam ko na you're smart in a lot of ways, and I also know that you will progress beyond your dreams and achieve the best life ever!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paragraph 6: Right-aligned speech bubble with Scroll Reveal + Floating -->
+          <div class="scroll-reveal reveal-right flex justify-end">
+            <div class="comic-float-2 flex justify-end">
+              <div class="comic-bubble-right max-w-[92%] sm:max-w-[85%] p-4 bg-blue-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 border-2 border-slate-900 dark:border-white rounded-2xl rounded-tr-none shadow-[4px_4px_0px_#0f172a] dark:shadow-[4px_4px_0px_#38bdf8] text-right">
+                <span class="comic-tag text-[10px] font-display font-bold uppercase text-blue-600 dark:text-sky-400 block mb-1">
+                  #06
+                </span>
+                <p>
+                  Sure, struggles come and make our lives harder, but yet, these helps us strong and shapes us to be better, and I hope you keep doing it para we not left behind cuh, and jokes aside, alam kong palagi kang natututo and you're doing well!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paragraph 7: Left-aligned speech bubble with Scroll Reveal + Floating -->
+          <div class="scroll-reveal reveal-left flex justify-start">
+            <div class="comic-float-1 flex justify-start">
+              <div class="comic-bubble-left max-w-[92%] sm:max-w-[85%] p-4 bg-white dark:bg-comic-panel text-slate-800 dark:text-slate-100 border-2 border-slate-900 dark:border-white rounded-2xl rounded-tl-none shadow-[4px_4px_0px_#0f172a] dark:shadow-[4px_4px_0px_#38bdf8] text-left">
+                <span class="comic-tag text-[10px] font-display font-bold uppercase text-blue-600 dark:text-sky-400 block mb-1">
+                  #07
+                </span>
+                <p>
+                  So, in the upcoming years na magiging college ka, I hope for you to have the best experience, find a good circle and meet new people, para hindi ka na alone, and I promise you that I, we, and everyone who cares for you, will always be here for you.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sign-off: Right-aligned graphic banner with Scroll Reveal + Floating -->
+          <div class="scroll-reveal reveal-up flex justify-end pt-3">
+            <div class="comic-float-3">
+              <div class="p-3 px-4 bg-yellow-300 dark:bg-blue-600 text-slate-900 dark:text-white border-2 border-slate-900 dark:border-white rounded-xl shadow-[3px_3px_0px_#0f172a] dark:shadow-[3px_3px_0px_#fff] text-right">
+                <p class="font-display font-bold text-sm sm:text-base">
+                  The Happiest Birthday Ever, Mio! 🎉
+                </p>
+                <p class="text-xs font-semibold opacity-90 mt-0.5">
+                  — from migo :)
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Graphic Footer -->
+  <footer class="w-full text-center text-xs font-display font-bold text-slate-500 dark:text-slate-400 py-4 uppercase tracking-wider">
+    <i>PS: surreh konti lang message ku, tomorrow a surprise ket konti lang hehehee</i>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
